@@ -17,6 +17,11 @@ authors:
     orcid: https://orcid.org/my-orcid?orcid=0000-0002-2449-9032  # optional
     website: https://github.com/hrhampapura # optional
     affiliation: NCAR# optional
+  - family-names: Hiemstra
+    given-names: Justin T
+    orcid: https://orcid.org/0009-0003-2993-0308
+    website: https://github.com/jhiemstrawisc
+    affiliation: Center for High Throughput Computing
   - name: "Cookbook Template contributors" # use the 'name' field to acknowledge organizations
     website: "https://github.com/ProjectPythia/cookbook-template/graphs/contributors"
 title: "Cookbook Template"
