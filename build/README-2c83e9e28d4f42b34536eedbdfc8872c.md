@@ -19,9 +19,8 @@ such as the OSG's [OSPool](https://osg-htc.org/ospool).
 This cookbook gives motivating use cases from the geoscience community, including using datasets from NSF NCAR's [Research Data Archive](https://rda.ucar.edu/) (RDA) and the datasets of AWS [OpenData](https://aws.amazon.com/opendata/).
 
 ## Authors
-
-[Brian Bockelman](https://github.com/bbockelm)
 [Harsha R. Hampapura](https://github.com/hrhampapura)
+[Brian Bockelman](https://github.com/bbockelm)
 [Alexander Hoelzeman](https://github.com/ahoelzemann)
 [Emma Turetsky](https://github.com/turetske)
 [Amandha Wingert Barok](https://github.com/amandhawb)
