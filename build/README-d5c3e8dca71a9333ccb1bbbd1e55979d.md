@@ -16,7 +16,7 @@ The OSDF is a service that simplifies the streaming of a wide range of scientifi
 is meant to improve data availability for researchers working at any scale from individual laptops to distributed computing services
 such as the OSG's [OSPool](https://osg-htc.org/ospool).
 
-This cookbook gives motivating use cases from the geoscience community, including using datasets from NCAR's [Research Data Archive](https://rda.ucar.edu/) (RDA) and the datasets of AWS [OpenData](https://aws.amazon.com/opendata/).
+This cookbook gives motivating use cases from the geoscience community, including using datasets from NSF NCAR's [Research Data Archive](https://rda.ucar.edu/) (RDA) and the datasets of AWS [OpenData](https://aws.amazon.com/opendata/).
 
 ## Authors
 
