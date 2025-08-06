@@ -1,6 +1,6 @@
 # OSDF Cookbook
 
-<img src="thumbnails/thumbnail.png" alt="thumbnail" width="300"/>
+<img src="thumbnails/OSDF_OSPool_Logos.png" alt="thumbnail" width="300"/>
 
 [![nightly-build](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml)
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
