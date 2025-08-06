@@ -60,7 +60,7 @@ Florida International University (FIU) runs the [Envistor project](https://envis
 
 NOAA maintains a copy of its SONAR-based datasets of Atlanta fisheries data in the popular Zarr format.  This chapter shows how to load and use the datasets and fuse it with other products.
 
-### Example workflows - Sentinel data from AWS
+### Using Sentinel data from AWS
 
 All of AWS OpenData is connected to the OSDF!  This chapter includes examples of streaming Sentinel-2 data, stored in AWS's OpenData program, to your notebook.
 
