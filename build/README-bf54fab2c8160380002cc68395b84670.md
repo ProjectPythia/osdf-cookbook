@@ -6,17 +6,23 @@
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
 [![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
 
-_See the [Cookbook Contributor's Guide](https://projectpythia.org/cookbook-guide) for step-by-step instructions on how to create your new Cookbook and get it hosted on the [Pythia Cookbook Gallery](https://cookbooks.projectpythia.org)!_
-
-This Project Pythia Cookbook covers ... (replace `...` with the main subject of your cookbook ... e.g., _working with radar data in Python_)
+This Project Pythia Cookbook covers using the Open Science Data Federation (OSDF), a service for streaming scientific data across the US.
 
 ## Motivation
 
-(Add a few sentences stating why this cookbook will be useful. What skills will you, "the chef", gain once you have reached the end of the cookbook?)
+Have you ever been frustrated by the complications of accessing scientific data?  Why can't it "just work", like watching a Netflix movie?
+
+The OSDF is a service that simplifies the streaming of a wide range of scientific datasets with a goal that data access "just works".  It
+is meant to improve data availability for researchers working at any scale from individual laptops to distributed computing services
+such as the OSG's [OSPool](https://osg-htc.org/ospool).
+
+This cookbook gives motivating use cases from the geoscience community, including using datasets from NCAR's [Research Data Archive](https://rda.ucar.edu/) (RDA) and the datasets of AWS [OpenData](https://aws.amazon.com/opendata/).
 
 ## Authors
 
+[Brian Bockelman](https://github.com/bbockelm)
 [Harsha Hampapura](https://github.com/hrhampapura)
+
 ### Contributors
 
 <a href="https://github.com/ProjectPythia/osdf-cookbook/graphs/contributors">
@@ -25,21 +31,29 @@ This Project Pythia Cookbook covers ... (replace `...` with the main subject of 
 
 ## Structure
 
-(State one or more sections that will comprise the notebook. E.g., _This cookbook is broken up into two main sections - "Foundations" and "Example Workflows."_ Then, describe each section below.)
+This cookbook is broken up into two pieces - some background knowledge on the OSDF service itself
+and then a series of motivating examples from different repositories accessible via the OSDF.
 
 ### OSDF fundamentals
 
-(Add content for this section, e.g., "The foundational content includes ... ")
+What is the OSDF?  Who supports it? How can it benefit from my science?  A dive into the infrastructure itself.
 
-### Example workflows - NCAR's Research Data Archive datasets
+### Using datasets from NCAR's Research Data Archive
 
-This section includes examples 
+The Research Data Archive is NCAR's centrally-run archive, making decades of federally-funded earth systems data available.
+Learn how to use common data science tools when streaming from the RDA.
 
-### Example workflows - Envistor datasets
+### Using datasets from FIU's Envistor
 
-### Example workflows - NOAA SONAR fisheries dataset
+Florida International University (FIU) runs the [Envistor project](https://envistorhome.fiu.edu/envistor/), aggregating climate datasets from the south Florida region.
+
+### Using NOAA's SONAR fisheries datasets
+
+NOAA maintains a copy of its SONAR-based datasets of Atlanta fisheries data in the popular Zarr format.  This chapter shows how to load and use the datasets and fuse it with other products.
 
 ### Example workflows - Sentinel data from AWS
+
+All of AWS OpenData is connected to the OSDF!  This chapter includes examples of streaming Sentinel-2 data, stored in AWS's OpenData program, to your notebook.
 
 ## Running the Notebooks
 
@@ -71,17 +85,15 @@ executable book chapter.
 
 If you are interested in running this material locally on your computer, you will need to follow this workflow:
 
-(Replace "cookbook-example" with the title of your cookbooks)
-
-1. Clone the `https://github.com/ProjectPythia/cookbook-example` repository:
+1. Clone the `https://github.com/ProjectPythia/osdf-cookbook` repository:
 
    ```bash
-    git clone https://github.com/ProjectPythia/cookbook-example.git
+    git clone https://github.com/ProjectPythia/osdf-cookbook.git
    ```
 
-1. Move into the `cookbook-example` directory
+1. Move into the `osdf-cookbook` directory
    ```bash
-   cd cookbook-example
+   cd osdf-cookbook
    ```
 1. Create and activate your conda environment from the `environment.yml` file
    ```bash
