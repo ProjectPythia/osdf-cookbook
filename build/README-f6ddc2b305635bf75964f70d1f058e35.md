@@ -49,8 +49,7 @@ What is the OSDF?  Who supports it? How can it benefit from my science?  A dive 
 
 ### Using datasets from NCAR's Research Data Archive
 
-The Research Data Archive is NCAR's centrally-run archive, making decades of federally-funded earth systems data available.
-Learn how to use common data science tools when streaming from the RDA.
+NSF NCAR's [Research Data Archive](https://rda.ucar.edu/) (RDA) contains a large collection of meteorological, atmospheric composition, and oceanographic observations, and operational and reanalysis model outputs, integrated with NSF NCAR High Performance Compute services to support atmospheric and geosciences research. This chapter demonstrates how to use common data science tools when streaming from the RDA.
 
 ### Using datasets from FIU's Envistor
 
