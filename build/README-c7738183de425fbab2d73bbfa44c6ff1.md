@@ -6,7 +6,7 @@
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
 [![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
 
-This Project Pythia Cookbook covers using the Open Science Data Federation (OSDF), a service for streaming scientific data across the US.
+This Project Pythia Cookbook covers using the Open Science Data Federation (OSDF), a service for streaming scientific data across the globe.
 
 ## Motivation
 
@@ -21,7 +21,16 @@ This cookbook gives motivating use cases from the geoscience community, includin
 ## Authors
 
 [Brian Bockelman](https://github.com/bbockelm)
-[Harsha Hampapura](https://github.com/hrhampapura)
+[Harsha R. Hampapura](https://github.com/hrhampapura)
+[Alexander Hoelzeman](https://github.com/ahoelzemann)
+[Emma Turetsky](https://github.com/turetske)
+[Amandha Wingert Barok](https://github.com/amandhawb)
+[Aashish Panta](https://github.com/aashishpanta0)
+[Justin Hiemstra](https://github.com/jhiemstrawisc)
+[Douglas Schuster](https://github.com/DCSCHUS)
+[Riley Conroy](https://github.com/rpconroy)
+[Kibiwott Koech](https://github.com/kkbch)
+
 
 ### Contributors
 
@@ -98,7 +107,7 @@ If you are interested in running this material locally on your computer, you wil
 1. Create and activate your conda environment from the `environment.yml` file
    ```bash
    conda env create -f environment.yml
-   conda activate cookbook-example
+   conda activate osdf-cookbook
    ```
 1. Move into the `notebooks` directory and start up Jupyterlab
    ```bash
