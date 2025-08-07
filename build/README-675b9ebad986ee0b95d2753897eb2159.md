@@ -42,23 +42,23 @@ This cookbook gives motivating use cases from the geoscience community, includin
 This cookbook is broken up into two pieces - some background knowledge on the OSDF service itself
 and then a series of motivating examples from different repositories accessible via the OSDF.
 
-### OSDF fundamentals
+### OSDF Fundamentals
 
 What is the OSDF?  Who supports it? How can it benefit from my science?  A dive into the infrastructure itself.
 
-### Using datasets from NCAR's Research Data Archive
+### Using Datasets from NCAR's Research Data Archive
 
 NSF NCAR's [Research Data Archive](https://rda.ucar.edu/) (RDA) contains a large collection of meteorological, atmospheric composition, and oceanographic observations, and operational and reanalysis model outputs, integrated with NSF NCAR High Performance Compute services to support atmospheric and geosciences research. This chapter demonstrates how to use common data science tools when streaming from the RDA.
 
-### Using datasets from FIU's Envistor
+### Using Datasets from FIU's Envistor
 
 Florida International University (FIU) runs the [Envistor project](https://envistorhome.fiu.edu/envistor/), aggregating climate datasets from the south Florida region.
 
-### Using NOAA's SONAR fisheries datasets
+### Using NOAA's SONAR Fisheries Datasets
 
 NOAA maintains a copy of its SONAR-based datasets of Atlanta fisheries data in the popular Zarr format.  This chapter shows how to load and use the datasets and fuse it with other products.
 
-### Using Sentinel data from AWS
+### Using Sentinel Data from AWS
 
 All of AWS OpenData is connected to the OSDF!  This chapter includes examples of streaming Sentinel-2 data, stored in AWS's OpenData program, to your notebook.
 
