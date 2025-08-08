@@ -26,6 +26,7 @@ This cookbook gives motivating use cases from the geoscience community, includin
 [Emma Turetsky](https://github.com/turetske)
 [Amandha Wingert Barok](https://github.com/amandhawb)
 [Aashish Panta](https://github.com/aashishpanta0)
+[Joanmarie Del Vecchio](https://github.com/jmdelvecchio)
 [Justin Hiemstra](https://github.com/jhiemstrawisc)
 [Douglas Schuster](https://github.com/DCSCHUS)
 [Riley Conroy](https://github.com/rpconroy)
