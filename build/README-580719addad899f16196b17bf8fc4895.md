@@ -21,7 +21,7 @@ This cookbook gives motivating use cases from the geoscience community, includin
 ## Authors
 [Harsha R. Hampapura](https://github.com/hrhampapura)
 [Brian Bockelman](https://github.com/bbockelm)
-[Alexander Hoelzeman](https://github.com/ahoelzemann)
+[Alexander Hoelzemann](https://github.com/ahoelzemann)
 [Carrie Wall](https://github.com/carriecwall)
 [Emma Turetsky](https://github.com/turetske)
 [Amandha Wingert Barok](https://github.com/amandhawb)
