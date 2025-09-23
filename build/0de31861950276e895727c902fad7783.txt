@@ -1,0 +1,275 @@
+[31m---------------------------------------------------------------------------[39m
+[31mContentLengthError[39m                        Traceback (most recent call last)
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/aiohttp/client_proto.py:144[39m, in [36mResponseHandler.connection_lost[39m[34m(self, exc)[39m
+[32m    143[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m144[39m     uncompleted = [38;5;28;43mself[39;49m[43m.[49m[43m_parser[49m[43m.[49m[43mfeed_eof[49m[43m([49m[43m)[49m
+[32m    145[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m [38;5;28;01mas[39;00m underlying_exc:
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/aiohttp/_http_parser.pyx:511[39m, in [36maiohttp._http_parser.HttpParser.feed_eof[39m[34m()[39m
+
+[31mContentLengthError[39m: 400, message:
+  Not enough data to satisfy content length header.
+
+The above exception was the direct cause of the following exception:
+
+[31mClientPayloadError[39m                        Traceback (most recent call last)
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/conventions.py:412[39m, in [36mdecode_cf_variables[39m[34m(variables, attributes, concat_characters, mask_and_scale, decode_times, decode_coords, drop_variables, use_cftime, decode_timedelta)[39m
+[32m    411[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m412[39m     new_vars[k] = [43mdecode_cf_variable[49m[43m([49m
+[32m    413[39m [43m        [49m[43mk[49m[43m,[49m
+[32m    414[39m [43m        [49m[43mv[49m[43m,[49m
+[32m    415[39m [43m        [49m[43mconcat_characters[49m[43m=[49m[43m_item_or_default[49m[43m([49m[43mconcat_characters[49m[43m,[49m[43m [49m[43mk[49m[43m,[49m[43m [49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m[43m,[49m
+[32m    416[39m [43m        [49m[43mmask_and_scale[49m[43m=[49m[43m_item_or_default[49m[43m([49m[43mmask_and_scale[49m[43m,[49m[43m [49m[43mk[49m[43m,[49m[43m [49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m[43m,[49m
+[32m    417[39m [43m        [49m[43mdecode_times[49m[43m=[49m[43mcast[49m[43m([49m
+[32m    418[39m [43m            [49m[38;5;28;43mbool[39;49m[43m [49m[43m|[49m[43m [49m[43mCFDatetimeCoder[49m[43m,[49m[43m [49m[43m_item_or_default[49m[43m([49m[43mdecode_times[49m[43m,[49m[43m [49m[43mk[49m[43m,[49m[43m [49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m
+[32m    419[39m [43m        [49m[43m)[49m[43m,[49m
+[32m    420[39m [43m        [49m[43mstack_char_dim[49m[43m=[49m[43mstack_char_dim[49m[43m,[49m
+[32m    421[39m [43m        [49m[43muse_cftime[49m[43m=[49m[43m_item_or_default[49m[43m([49m[43muse_cftime[49m[43m,[49m[43m [49m[43mk[49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[32m    422[39m [43m        [49m[43mdecode_timedelta[49m[43m=[49m[43m_item_or_default[49m[43m([49m[43mdecode_timedelta[49m[43m,[49m[43m [49m[43mk[49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[32m    423[39m [43m    [49m[43m)[49m
+[32m    424[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m [38;5;28;01mas[39;00m e:
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/conventions.py:239[39m, in [36mdecode_cf_variable[39m[34m(name, var, concat_characters, mask_and_scale, decode_times, decode_endianness, stack_char_dim, use_cftime, decode_timedelta)[39m
+[32m    230[39m         [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m(
+[32m    231[39m             [33m"[39m[33mUsage of [39m[33m'[39m[33muse_cftime[39m[33m'[39m[33m as a kwarg is not allowed [39m[33m"[39m
+[32m    232[39m             [33m"[39m[33mif a [39m[33m'[39m[33mCFDatetimeCoder[39m[33m'[39m[33m instance is passed to [39m[33m"[39m
+[32m   (...)[39m[32m    237[39m             [33m"[39m[33m    ds = xr.open_dataset(decode_times=time_coder)[39m[38;5;130;01m\n[39;00m[33m"[39m,
+[32m    238[39m         )
+[32m--> [39m[32m239[39m     var = [43mdecode_times[49m[43m.[49m[43mdecode[49m[43m([49m[43mvar[49m[43m,[49m[43m [49m[43mname[49m[43m=[49m[43mname[49m[43m)[49m
+[32m    241[39m [38;5;28;01mif[39;00m decode_endianness [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m var.dtype.isnative:
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/coding/times.py:1391[39m, in [36mCFDatetimeCoder.decode[39m[34m(self, variable, name)[39m
+[32m   1390[39m calendar = pop_to(attrs, encoding, [33m"[39m[33mcalendar[39m[33m"[39m)
+[32m-> [39m[32m1391[39m dtype = [43m_decode_cf_datetime_dtype[49m[43m([49m
+[32m   1392[39m [43m    [49m[43mdata[49m[43m,[49m[43m [49m[43munits[49m[43m,[49m[43m [49m[43mcalendar[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[43m.[49m[43muse_cftime[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[43m.[49m[43mtime_unit[49m
+[32m   1393[39m [43m[49m[43m)[49m
+[32m   1394[39m transform = partial(
+[32m   1395[39m     decode_cf_datetime,
+[32m   1396[39m     units=units,
+[32m   (...)[39m[32m   1399[39m     time_unit=[38;5;28mself[39m.time_unit,
+[32m   1400[39m )
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/coding/times.py:333[39m, in [36m_decode_cf_datetime_dtype[39m[34m(data, units, calendar, use_cftime, time_unit)[39m
+[32m    331[39m values = indexing.ImplicitToExplicitIndexingAdapter(indexing.as_indexable(data))
+[32m    332[39m example_value = np.concatenate(
+[32m--> [39m[32m333[39m     [to_numpy([43mfirst_n_items[49m[43m([49m[43mvalues[49m[43m,[49m[43m [49m[32;43m1[39;49m[43m)[49m), to_numpy(last_item(values))]
+[32m    334[39m )
+[32m    336[39m [38;5;28;01mtry[39;00m:
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/formatting.py:104[39m, in [36mfirst_n_items[39m[34m(array, n_desired)[39m
+[32m    103[39m     array = array._data
+[32m--> [39m[32m104[39m [38;5;28;01mreturn[39;00m ravel([43mto_duck_array[49m[43m([49m[43marray[49m[43m)[49m)[:n_desired]
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/namedarray/pycompat.py:143[39m, in [36mto_duck_array[39m[34m(data, **kwargs)[39m
+[32m    142[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(data, ExplicitlyIndexed | ImplicitToExplicitIndexingAdapter):
+[32m--> [39m[32m143[39m     [38;5;28;01mreturn[39;00m [43mdata[49m[43m.[49m[43mget_duck_array[49m[43m([49m[43m)[49m  [38;5;66;03m# type: ignore[no-untyped-call, no-any-return][39;00m
+[32m    144[39m [38;5;28;01melif[39;00m is_duck_array(data):
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py:664[39m, in [36mImplicitToExplicitIndexingAdapter.get_duck_array[39m[34m(self)[39m
+[32m    663[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mget_duck_array[39m([38;5;28mself[39m):
+[32m--> [39m[32m664[39m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43marray[49m[43m.[49m[43mget_duck_array[49m[43m([49m[43m)[49m
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py:737[39m, in [36mLazilyIndexedArray.get_duck_array[39m[34m(self)[39m
+[32m    736[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m([38;5;28mself[39m.array, BackendArray):
+[32m--> [39m[32m737[39m     array = [38;5;28;43mself[39;49m[43m.[49m[43marray[49m[43m[[49m[38;5;28;43mself[39;49m[43m.[49m[43mkey[49m[43m][49m
+[32m    738[39m [38;5;28;01melse[39;00m:
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/backends/zarr.py:262[39m, in [36mZarrArrayWrapper.__getitem__[39m[34m(self, key)[39m
+[32m    261[39m     method = [38;5;28mself[39m._oindex
+[32m--> [39m[32m262[39m [38;5;28;01mreturn[39;00m [43mindexing[49m[43m.[49m[43mexplicit_indexing_adapter[49m[43m([49m
+[32m    263[39m [43m    [49m[43mkey[49m[43m,[49m[43m [49m[43marray[49m[43m.[49m[43mshape[49m[43m,[49m[43m [49m[43mindexing[49m[43m.[49m[43mIndexingSupport[49m[43m.[49m[43mVECTORIZED[49m[43m,[49m[43m [49m[43mmethod[49m
+[32m    264[39m [43m[49m[43m)[49m
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py:1129[39m, in [36mexplicit_indexing_adapter[39m[34m(key, shape, indexing_support, raw_indexing_method)[39m
+[32m   1128[39m raw_key, numpy_indices = decompose_indexer(key, shape, indexing_support)
+[32m-> [39m[32m1129[39m result = [43mraw_indexing_method[49m[43m([49m[43mraw_key[49m[43m.[49m[43mtuple[49m[43m)[49m
+[32m   1130[39m [38;5;28;01mif[39;00m numpy_indices.tuple:
+[32m   1131[39m     [38;5;66;03m# index the loaded duck array[39;00m
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/backends/zarr.py:225[39m, in [36mZarrArrayWrapper._getitem[39m[34m(self, key)[39m
+[32m    224[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_getitem[39m([38;5;28mself[39m, key):
+[32m--> [39m[32m225[39m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43m_array[49m[43m[[49m[43mkey[49m[43m][49m
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py:800[39m, in [36mArray.__getitem__[39m[34m(self, selection)[39m
+[32m    799[39m [38;5;28;01melse[39;00m:
+[32m--> [39m[32m800[39m     result = [38;5;28;43mself[39;49m[43m.[49m[43mget_basic_selection[49m[43m([49m[43mpure_selection[49m[43m,[49m[43m [49m[43mfields[49m[43m=[49m[43mfields[49m[43m)[49m
+[32m    801[39m [38;5;28;01mreturn[39;00m result
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py:926[39m, in [36mArray.get_basic_selection[39m[34m(self, selection, out, fields)[39m
+[32m    925[39m [38;5;28;01melse[39;00m:
+[32m--> [39m[32m926[39m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43m_get_basic_selection_nd[49m[43m([49m[43mselection[49m[43m=[49m[43mselection[49m[43m,[49m[43m [49m[43mout[49m[43m=[49m[43mout[49m[43m,[49m[43m [49m[43mfields[49m[43m=[49m[43mfields[49m[43m)[49m
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py:968[39m, in [36mArray._get_basic_selection_nd[39m[34m(self, selection, out, fields)[39m
+[32m    966[39m indexer = BasicIndexer(selection, [38;5;28mself[39m)
+[32m--> [39m[32m968[39m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43m_get_selection[49m[43m([49m[43mindexer[49m[43m=[49m[43mindexer[49m[43m,[49m[43m [49m[43mout[49m[43m=[49m[43mout[49m[43m,[49m[43m [49m[43mfields[49m[43m=[49m[43mfields[49m[43m)[49m
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py:1343[39m, in [36mArray._get_selection[39m[34m(self, indexer, out, fields)[39m
+[32m   1342[39m     lchunk_coords, lchunk_selection, lout_selection = [38;5;28mzip[39m(*indexer)
+[32m-> [39m[32m1343[39m     [38;5;28;43mself[39;49m[43m.[49m[43m_chunk_getitems[49m[43m([49m
+[32m   1344[39m [43m        [49m[43mlchunk_coords[49m[43m,[49m
+[32m   1345[39m [43m        [49m[43mlchunk_selection[49m[43m,[49m
+[32m   1346[39m [43m        [49m[43mout[49m[43m,[49m
+[32m   1347[39m [43m        [49m[43mlout_selection[49m[43m,[49m
+[32m   1348[39m [43m        [49m[43mdrop_axes[49m[43m=[49m[43mindexer[49m[43m.[49m[43mdrop_axes[49m[43m,[49m
+[32m   1349[39m [43m        [49m[43mfields[49m[43m=[49m[43mfields[49m[43m,[49m
+[32m   1350[39m [43m    [49m[43m)[49m
+[32m   1351[39m [38;5;28;01mif[39;00m out.shape:
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py:2179[39m, in [36mArray._chunk_getitems[39m[34m(self, lchunk_coords, lchunk_selection, out, lout_selection, drop_axes, fields)[39m
+[32m   2178[39m         contexts = ConstantMap(ckeys, constant=Context(meta_array=[38;5;28mself[39m._meta_array))
+[32m-> [39m[32m2179[39m     cdatas = [38;5;28;43mself[39;49m[43m.[49m[43mchunk_store[49m[43m.[49m[43mgetitems[49m[43m([49m[43mckeys[49m[43m,[49m[43m [49m[43mcontexts[49m[43m=[49m[43mcontexts[49m[43m)[49m
+[32m   2181[39m [38;5;28;01mfor[39;00m ckey, chunk_select, out_select [38;5;129;01min[39;00m [38;5;28mzip[39m(ckeys, lchunk_selection, lout_selection):
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/storage.py:1435[39m, in [36mFSStore.getitems[39m[34m(self, keys, contexts)[39m
+[32m   1433[39m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(v, [38;5;167;01mException[39;00m):
+[32m   1434[39m     [38;5;66;03m# Raise any other exception[39;00m
+[32m-> [39m[32m1435[39m     [38;5;28;01mraise[39;00m v
+[32m   1436[39m [38;5;28;01melse[39;00m:
+[32m   1437[39m     [38;5;66;03m# The function calling this method may not recognize the transformed[39;00m
+[32m   1438[39m     [38;5;66;03m# keys, so we send the values returned by self.map.getitems back into[39;00m
+[32m   1439[39m     [38;5;66;03m# the original key space.[39;00m
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/fsspec/asyn.py:244[39m, in [36m_run_coros_in_chunks.<locals>._run_coro[39m[34m(coro, i)[39m
+[32m    243[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m244[39m     [38;5;28;01mreturn[39;00m [38;5;28;01mawait[39;00m asyncio.wait_for(coro, timeout=timeout), i
+[32m    245[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m [38;5;28;01mas[39;00m e:
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/asyncio/tasks.py:520[39m, in [36mwait_for[39m[34m(fut, timeout)[39m
+[32m    519[39m [38;5;28;01masync[39;00m [38;5;28;01mwith[39;00m timeouts.timeout(timeout):
+[32m--> [39m[32m520[39m     [38;5;28;01mreturn[39;00m [38;5;28;01mawait[39;00m fut
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/fsspec/implementations/http.py:245[39m, in [36mHTTPFileSystem._cat_file[39m[34m(self, url, start, end, **kwargs)[39m
+[32m    244[39m [38;5;28;01masync[39;00m [38;5;28;01mwith[39;00m session.get([38;5;28mself[39m.encode_url(url), **kw) [38;5;28;01mas[39;00m r:
+[32m--> [39m[32m245[39m     out = [38;5;28;01mawait[39;00m r.read()
+[32m    246[39m     [38;5;28mself[39m._raise_not_found_for_status(r, url)
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/aiohttp/client_reqrep.py:686[39m, in [36mClientResponse.read[39m[34m(self)[39m
+[32m    685[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m686[39m     [38;5;28mself[39m._body = [38;5;28;01mawait[39;00m [38;5;28mself[39m.content.read()
+[32m    687[39m     [38;5;28;01mfor[39;00m trace [38;5;129;01min[39;00m [38;5;28mself[39m._traces:
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/aiohttp/streams.py:418[39m, in [36mStreamReader.read[39m[34m(self, n)[39m
+[32m    417[39m [38;5;28;01mwhile[39;00m [38;5;28;01mTrue[39;00m:
+[32m--> [39m[32m418[39m     block = [38;5;28;01mawait[39;00m [38;5;28mself[39m.readany()
+[32m    419[39m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m block:
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/aiohttp/streams.py:440[39m, in [36mStreamReader.readany[39m[34m(self)[39m
+[32m    439[39m [38;5;28;01mwhile[39;00m [38;5;129;01mnot[39;00m [38;5;28mself[39m._buffer [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m [38;5;28mself[39m._eof:
+[32m--> [39m[32m440[39m     [38;5;28;01mawait[39;00m [38;5;28mself[39m._wait([33m"[39m[33mreadany[39m[33m"[39m)
+[32m    442[39m [38;5;28;01mreturn[39;00m [38;5;28mself[39m._read_nowait(-[32m1[39m)
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/aiohttp/streams.py:347[39m, in [36mStreamReader._wait[39m[34m(self, func_name)[39m
+[32m    346[39m     [38;5;28;01mwith[39;00m [38;5;28mself[39m._timer:
+[32m--> [39m[32m347[39m         [38;5;28;01mawait[39;00m waiter
+[32m    348[39m [38;5;28;01mfinally[39;00m:
+
+[31mClientPayloadError[39m: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header.'>
+
+The above exception was the direct cause of the following exception:
+
+[31mClientPayloadError[39m                        Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[5][39m[32m, line 18[39m
+[32m      8[39m query = [38;5;28mdict[39m(
+[32m      9[39m     experiment_id=expts,
+[32m     10[39m     table_id=[33m'[39m[33mAmon[39m[33m'[39m,
+[32m   (...)[39m[32m     13[39m     [38;5;66;03m#activity_id = 'CMIP',[39;00m
+[32m     14[39m )
+[32m     16[39m col_subset = col.search(require_all_on=[[33m"[39m[33msource_id[39m[33m"[39m], **query)
+[32m---> [39m[32m18[39m ds = [43mxr[49m[43m.[49m[43mopen_zarr[49m[43m([49m[43mcol_subset[49m[43m.[49m[43mdf[49m[43m[[49m[33;43m'[39;49m[33;43mzstore[39;49m[33;43m'[39;49m[43m][49m[43m[[49m[32;43m0[39;49m[43m][49m[43m)[49m
+[32m     20[39m ds.tas.isel(time=[32m0[39m).plot()
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/backends/zarr.py:1581[39m, in [36mopen_zarr[39m[34m(store, group, synchronizer, chunks, decode_cf, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, consolidated, overwrite_encoded_chunks, chunk_store, storage_options, decode_timedelta, use_cftime, zarr_version, zarr_format, use_zarr_fill_value_as_mask, chunked_array_type, from_array_kwargs, create_default_indexes, **kwargs)[39m
+[32m   1567[39m     [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m(
+[32m   1568[39m         [33m"[39m[33mopen_zarr() got unexpected keyword arguments [39m[33m"[39m + [33m"[39m[33m,[39m[33m"[39m.join(kwargs.keys())
+[32m   1569[39m     )
+[32m   1571[39m backend_kwargs = {
+[32m   1572[39m     [33m"[39m[33msynchronizer[39m[33m"[39m: synchronizer,
+[32m   1573[39m     [33m"[39m[33mconsolidated[39m[33m"[39m: consolidated,
+[32m   (...)[39m[32m   1578[39m     [33m"[39m[33mzarr_format[39m[33m"[39m: zarr_format,
+[32m   1579[39m }
+[32m-> [39m[32m1581[39m ds = [43mopen_dataset[49m[43m([49m
+[32m   1582[39m [43m    [49m[43mfilename_or_obj[49m[43m=[49m[43mstore[49m[43m,[49m
+[32m   1583[39m [43m    [49m[43mgroup[49m[43m=[49m[43mgroup[49m[43m,[49m
+[32m   1584[39m [43m    [49m[43mdecode_cf[49m[43m=[49m[43mdecode_cf[49m[43m,[49m
+[32m   1585[39m [43m    [49m[43mmask_and_scale[49m[43m=[49m[43mmask_and_scale[49m[43m,[49m
+[32m   1586[39m [43m    [49m[43mdecode_times[49m[43m=[49m[43mdecode_times[49m[43m,[49m
+[32m   1587[39m [43m    [49m[43mconcat_characters[49m[43m=[49m[43mconcat_characters[49m[43m,[49m
+[32m   1588[39m [43m    [49m[43mdecode_coords[49m[43m=[49m[43mdecode_coords[49m[43m,[49m
+[32m   1589[39m [43m    [49m[43mengine[49m[43m=[49m[33;43m"[39;49m[33;43mzarr[39;49m[33;43m"[39;49m[43m,[49m
+[32m   1590[39m [43m    [49m[43mchunks[49m[43m=[49m[43mchunks[49m[43m,[49m
+[32m   1591[39m [43m    [49m[43mdrop_variables[49m[43m=[49m[43mdrop_variables[49m[43m,[49m
+[32m   1592[39m [43m    [49m[43mcreate_default_indexes[49m[43m=[49m[43mcreate_default_indexes[49m[43m,[49m
+[32m   1593[39m [43m    [49m[43mchunked_array_type[49m[43m=[49m[43mchunked_array_type[49m[43m,[49m
+[32m   1594[39m [43m    [49m[43mfrom_array_kwargs[49m[43m=[49m[43mfrom_array_kwargs[49m[43m,[49m
+[32m   1595[39m [43m    [49m[43mbackend_kwargs[49m[43m=[49m[43mbackend_kwargs[49m[43m,[49m
+[32m   1596[39m [43m    [49m[43mdecode_timedelta[49m[43m=[49m[43mdecode_timedelta[49m[43m,[49m
+[32m   1597[39m [43m    [49m[43muse_cftime[49m[43m=[49m[43muse_cftime[49m[43m,[49m
+[32m   1598[39m [43m    [49m[43mzarr_version[49m[43m=[49m[43mzarr_version[49m[43m,[49m
+[32m   1599[39m [43m    [49m[43muse_zarr_fill_value_as_mask[49m[43m=[49m[43muse_zarr_fill_value_as_mask[49m[43m,[49m
+[32m   1600[39m [43m[49m[43m)[49m
+[32m   1601[39m [38;5;28;01mreturn[39;00m ds
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/backends/api.py:760[39m, in [36mopen_dataset[39m[34m(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, create_default_indexes, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)[39m
+[32m    748[39m decoders = _resolve_decoders_kwargs(
+[32m    749[39m     decode_cf,
+[32m    750[39m     open_backend_dataset_parameters=backend.open_dataset_parameters,
+[32m   (...)[39m[32m    756[39m     decode_coords=decode_coords,
+[32m    757[39m )
+[32m    759[39m overwrite_encoded_chunks = kwargs.pop([33m"[39m[33moverwrite_encoded_chunks[39m[33m"[39m, [38;5;28;01mNone[39;00m)
+[32m--> [39m[32m760[39m backend_ds = [43mbackend[49m[43m.[49m[43mopen_dataset[49m[43m([49m
+[32m    761[39m [43m    [49m[43mfilename_or_obj[49m[43m,[49m
+[32m    762[39m [43m    [49m[43mdrop_variables[49m[43m=[49m[43mdrop_variables[49m[43m,[49m
+[32m    763[39m [43m    [49m[43m*[49m[43m*[49m[43mdecoders[49m[43m,[49m
+[32m    764[39m [43m    [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m,[49m
+[32m    765[39m [43m[49m[43m)[49m
+[32m    766[39m ds = _dataset_from_backend_dataset(
+[32m    767[39m     backend_ds,
+[32m    768[39m     filename_or_obj,
+[32m   (...)[39m[32m    779[39m     **kwargs,
+[32m    780[39m )
+[32m    781[39m [38;5;28;01mreturn[39;00m ds
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/backends/zarr.py:1671[39m, in [36mZarrBackendEntrypoint.open_dataset[39m[34m(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, synchronizer, consolidated, chunk_store, storage_options, zarr_version, zarr_format, store, engine, use_zarr_fill_value_as_mask, cache_members)[39m
+[32m   1669[39m store_entrypoint = StoreBackendEntrypoint()
+[32m   1670[39m [38;5;28;01mwith[39;00m close_on_error(store):
+[32m-> [39m[32m1671[39m     ds = [43mstore_entrypoint[49m[43m.[49m[43mopen_dataset[49m[43m([49m
+[32m   1672[39m [43m        [49m[43mstore[49m[43m,[49m
+[32m   1673[39m [43m        [49m[43mmask_and_scale[49m[43m=[49m[43mmask_and_scale[49m[43m,[49m
+[32m   1674[39m [43m        [49m[43mdecode_times[49m[43m=[49m[43mdecode_times[49m[43m,[49m
+[32m   1675[39m [43m        [49m[43mconcat_characters[49m[43m=[49m[43mconcat_characters[49m[43m,[49m
+[32m   1676[39m [43m        [49m[43mdecode_coords[49m[43m=[49m[43mdecode_coords[49m[43m,[49m
+[32m   1677[39m [43m        [49m[43mdrop_variables[49m[43m=[49m[43mdrop_variables[49m[43m,[49m
+[32m   1678[39m [43m        [49m[43muse_cftime[49m[43m=[49m[43muse_cftime[49m[43m,[49m
+[32m   1679[39m [43m        [49m[43mdecode_timedelta[49m[43m=[49m[43mdecode_timedelta[49m[43m,[49m
+[32m   1680[39m [43m    [49m[43m)[49m
+[32m   1681[39m [38;5;28;01mreturn[39;00m ds
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/backends/store.py:45[39m, in [36mStoreBackendEntrypoint.open_dataset[39m[34m(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, set_indexes, use_cftime, decode_timedelta)[39m
+[32m     42[39m [38;5;28mvars[39m, attrs = filename_or_obj.load()
+[32m     43[39m encoding = filename_or_obj.get_encoding()
+[32m---> [39m[32m45[39m [38;5;28mvars[39m, attrs, coord_names = [43mconventions[49m[43m.[49m[43mdecode_cf_variables[49m[43m([49m
+[32m     46[39m [43m    [49m[38;5;28;43mvars[39;49m[43m,[49m
+[32m     47[39m [43m    [49m[43mattrs[49m[43m,[49m
+[32m     48[39m [43m    [49m[43mmask_and_scale[49m[43m=[49m[43mmask_and_scale[49m[43m,[49m
+[32m     49[39m [43m    [49m[43mdecode_times[49m[43m=[49m[43mdecode_times[49m[43m,[49m
+[32m     50[39m [43m    [49m[43mconcat_characters[49m[43m=[49m[43mconcat_characters[49m[43m,[49m
+[32m     51[39m [43m    [49m[43mdecode_coords[49m[43m=[49m[43mdecode_coords[49m[43m,[49m
+[32m     52[39m [43m    [49m[43mdrop_variables[49m[43m=[49m[43mdrop_variables[49m[43m,[49m
+[32m     53[39m [43m    [49m[43muse_cftime[49m[43m=[49m[43muse_cftime[49m[43m,[49m
+[32m     54[39m [43m    [49m[43mdecode_timedelta[49m[43m=[49m[43mdecode_timedelta[49m[43m,[49m
+[32m     55[39m [43m[49m[43m)[49m
+[32m     57[39m [38;5;66;03m# split data and coordinate variables (promote dimension coordinates)[39;00m
+[32m     58[39m data_vars = {}
+
+[36mFile [39m[32m~/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/conventions.py:425[39m, in [36mdecode_cf_variables[39m[34m(variables, attributes, concat_characters, mask_and_scale, decode_times, decode_coords, drop_variables, use_cftime, decode_timedelta)[39m
+[32m    412[39m     new_vars[k] = decode_cf_variable(
+[32m    413[39m         k,
+[32m    414[39m         v,
+[32m   (...)[39m[32m    422[39m         decode_timedelta=_item_or_default(decode_timedelta, k, [38;5;28;01mNone[39;00m),
+[32m    423[39m     )
+[32m    424[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m [38;5;28;01mas[39;00m e:
+[32m--> [39m[32m425[39m     [38;5;28;01mraise[39;00m [38;5;28mtype[39m(e)([33mf[39m[33m"[39m[33mFailed to decode variable [39m[38;5;132;01m{[39;00mk[38;5;132;01m!r}[39;00m[33m: [39m[38;5;132;01m{[39;00me[38;5;132;01m}[39;00m[33m"[39m) [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01me[39;00m
+[32m    426[39m [38;5;28;01mif[39;00m decode_coords [38;5;129;01min[39;00m [[38;5;28;01mTrue[39;00m, [33m"[39m[33mcoordinates[39m[33m"[39m, [33m"[39m[33mall[39m[33m"[39m]:
+[32m    427[39m     var_attrs = new_vars[k].attrs
+
+[31mClientPayloadError[39m: Failed to decode variable 'time': Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header.'>
