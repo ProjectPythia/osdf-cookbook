@@ -49,9 +49,9 @@ and then a series of motivating examples from different repositories accessible 
 
 What is the OSDF?  Who supports it? How can it benefit from my science?  A dive into the infrastructure itself.
 
-### Using Datasets from NCAR's Research Data Archive
+### Using Datasets from NCAR's Geoscience Data Exchange
 
-NSF NCAR's [Research Data Archive](https://rda.ucar.edu/) (RDA) contains a large collection of meteorological, atmospheric composition, and oceanographic observations, and operational and reanalysis model outputs, integrated with NSF NCAR High Performance Compute services to support atmospheric and geosciences research. This chapter demonstrates how to use common data science tools when streaming from the RDA.
+NSF NCAR's [Geoscience Data Exchange](https://gdex.ucar.edu/) (GDEX) contains a large collection of meteorological, atmospheric composition, and oceanographic observations, and operational and reanalysis model outputs, integrated with NSF NCAR High Performance Compute services to support atmospheric and geosciences research. This chapter demonstrates how to use common data science tools when streaming from the RDA.
 
 ### Using Datasets from FIU's Envistor
 
