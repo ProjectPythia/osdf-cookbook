@@ -16,7 +16,7 @@ The OSDF is a service that simplifies the streaming of a wide range of scientifi
 is meant to improve data availability for researchers working at any scale from individual laptops to distributed computing services
 such as the OSG's [OSPool](https://osg-htc.org/ospool).
 
-This cookbook gives motivating use cases from the geoscience community, including using datasets from NSF NCAR's [Research Data Archive](https://rda.ucar.edu/) (RDA) and the datasets of AWS [OpenData](https://aws.amazon.com/opendata/).
+This cookbook gives motivating use cases from the geoscience community, including using datasets from NSF NCAR's [Geoscience Data Exchange](https://gdex.ucar.edu/) (GDEX) and the datasets of AWS [OpenData](https://aws.amazon.com/opendata/).
 
 ## Authors
 [Harsha R. Hampapura](https://github.com/hrhampapura)
@@ -51,7 +51,7 @@ What is the OSDF?  Who supports it? How can it benefit from my science?  A dive 
 
 ### Using Datasets from NCAR's Geoscience Data Exchange
 
-NSF NCAR's [Geoscience Data Exchange](https://gdex.ucar.edu/) (GDEX) contains a large collection of meteorological, atmospheric composition, and oceanographic observations, and operational and reanalysis model outputs, integrated with NSF NCAR High Performance Compute services to support atmospheric and geosciences research. This chapter demonstrates how to use common data science tools when streaming from the RDA.
+NSF NCAR's [Geoscience Data Exchange](https://gdex.ucar.edu/) (GDEX) contains a large collection of meteorological, atmospheric composition, and oceanographic observations, and operational and reanalysis model outputs, integrated with NSF NCAR High Performance Compute services to support atmospheric and geosciences research. This chapter demonstrates how to use common data science tools when streaming from the GDEX.
 
 ### Using Datasets from FIU's Envistor
 
