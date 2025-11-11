@@ -1,0 +1,410 @@
+2025-11-11 01:49:24,432 - distributed.protocol.pickle - ERROR - Failed to serialize 502, message='Bad Gateway', url='https://dtn-pas.hous.nrp.internet2.edu:8443/aws-opendata/us-west-2/cmip6-pds/CMIP6/ScenarioMIP/CAS/CAS-ESM2-0/ssp370/r1i1p1f1/Amon/tas/gn/v20201228/tas/1.0.0'.
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/worker.py", line 2988, in _run_task_simple
+    result = task(data)
+             ^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 759, in __call__
+    return self.func(*new_argspec)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 199, in _execute_subgraph
+    res = execute_graph(final, keys=[outkey])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 1078, in execute_graph
+    cache[key] = node(cache)
+                 ^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 759, in __call__
+    return self.func(*new_argspec)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/array/core.py", line 141, in getter
+    c = np.asarray(c)
+        ^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 659, in __array__
+    return np.asarray(self.get_duck_array(), dtype=dtype, copy=copy)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 664, in get_duck_array
+    return self.array.get_duck_array()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 897, in get_duck_array
+    return self.array.get_duck_array()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/coding/common.py", line 80, in get_duck_array
+    return self.func(self.array.get_duck_array())
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 737, in get_duck_array
+    array = self.array[self.key]
+            ~~~~~~~~~~^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/backends/zarr.py", line 262, in __getitem__
+    return indexing.explicit_indexing_adapter(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 1129, in explicit_indexing_adapter
+    result = raw_indexing_method(raw_key.tuple)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/backends/zarr.py", line 225, in _getitem
+    return self._array[key]
+           ~~~~~~~~~~~^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 798, in __getitem__
+    result = self.get_orthogonal_selection(pure_selection, fields=fields)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 1080, in get_orthogonal_selection
+    return self._get_selection(indexer=indexer, out=out, fields=fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 1343, in _get_selection
+    self._chunk_getitems(
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 2179, in _chunk_getitems
+    cdatas = self.chunk_store.getitems(ckeys, contexts=contexts)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/storage.py", line 1435, in getitems
+    raise v
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/fsspec/asyn.py", line 244, in _run_coro
+    return await asyncio.wait_for(coro, timeout=timeout), i
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/fsspec/implementations/http.py", line 247, in _cat_file
+    self._raise_not_found_for_status(r, url)
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/fsspec/implementations/http.py", line 230, in _raise_not_found_for_status
+    response.raise_for_status()
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/aiohttp/client_reqrep.py", line 636, in raise_for_status
+    raise ClientResponseError(
+aiohttp.client_exceptions.ClientResponseError: 502, message='Bad Gateway', url='https://dtn-pas.hous.nrp.internet2.edu:8443/aws-opendata/us-west-2/cmip6-pds/CMIP6/ScenarioMIP/CAS/CAS-ESM2-0/ssp370/r1i1p1f1/Amon/tas/gn/v20201228/tas/1.0.0'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/protocol/pickle.py", line 63, in dumps
+    result = pickle.dumps(x, **dump_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/protocol/pickle.py", line 68, in dumps
+    pickler.dump(x)
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/protocol/pickle.py", line 80, in dumps
+    result = cloudpickle.dumps(x, **dump_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/cloudpickle/cloudpickle.py", line 1544, in dumps
+    cp.dump(obj)
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/cloudpickle/cloudpickle.py", line 1313, in dump
+    return super().dump(obj)
+           ^^^^^^^^^^^^^^^^^
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+2025-11-11 01:49:24,458 - distributed.protocol.pickle - ERROR - Failed to serialize 502, message='Bad Gateway', url='https://dtn-pas.jack.nrp.internet2.edu:8443/aws-opendata/us-west-2/cmip6-pds/CMIP6/ScenarioMIP/CAS/CAS-ESM2-0/ssp245/r1i1p1f1/Amon/tas/gn/v20201228/tas/2.0.0'.
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/worker.py", line 2988, in _run_task_simple
+    result = task(data)
+             ^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 759, in __call__
+    return self.func(*new_argspec)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 199, in _execute_subgraph
+    res = execute_graph(final, keys=[outkey])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 1078, in execute_graph
+    cache[key] = node(cache)
+                 ^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 759, in __call__
+    return self.func(*new_argspec)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 199, in _execute_subgraph
+    res = execute_graph(final, keys=[outkey])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 1078, in execute_graph
+    cache[key] = node(cache)
+                 ^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 759, in __call__
+    return self.func(*new_argspec)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/array/core.py", line 141, in getter
+    c = np.asarray(c)
+        ^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 659, in __array__
+    return np.asarray(self.get_duck_array(), dtype=dtype, copy=copy)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 664, in get_duck_array
+    return self.array.get_duck_array()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 897, in get_duck_array
+    return self.array.get_duck_array()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/coding/common.py", line 80, in get_duck_array
+    return self.func(self.array.get_duck_array())
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 737, in get_duck_array
+    array = self.array[self.key]
+            ~~~~~~~~~~^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/backends/zarr.py", line 262, in __getitem__
+    return indexing.explicit_indexing_adapter(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 1129, in explicit_indexing_adapter
+    result = raw_indexing_method(raw_key.tuple)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/backends/zarr.py", line 225, in _getitem
+    return self._array[key]
+           ~~~~~~~~~~~^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 798, in __getitem__
+    result = self.get_orthogonal_selection(pure_selection, fields=fields)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 1080, in get_orthogonal_selection
+    return self._get_selection(indexer=indexer, out=out, fields=fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 1343, in _get_selection
+    self._chunk_getitems(
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 2179, in _chunk_getitems
+    cdatas = self.chunk_store.getitems(ckeys, contexts=contexts)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/storage.py", line 1435, in getitems
+    raise v
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/fsspec/asyn.py", line 244, in _run_coro
+    return await asyncio.wait_for(coro, timeout=timeout), i
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/fsspec/implementations/http.py", line 247, in _cat_file
+    self._raise_not_found_for_status(r, url)
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/fsspec/implementations/http.py", line 230, in _raise_not_found_for_status
+    response.raise_for_status()
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/aiohttp/client_reqrep.py", line 636, in raise_for_status
+    raise ClientResponseError(
+aiohttp.client_exceptions.ClientResponseError: 502, message='Bad Gateway', url='https://dtn-pas.jack.nrp.internet2.edu:8443/aws-opendata/us-west-2/cmip6-pds/CMIP6/ScenarioMIP/CAS/CAS-ESM2-0/ssp245/r1i1p1f1/Amon/tas/gn/v20201228/tas/2.0.0'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/protocol/pickle.py", line 63, in dumps
+    result = pickle.dumps(x, **dump_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/protocol/pickle.py", line 68, in dumps
+    pickler.dump(x)
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/protocol/pickle.py", line 80, in dumps
+    result = cloudpickle.dumps(x, **dump_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/cloudpickle/cloudpickle.py", line 1544, in dumps
+    cp.dump(obj)
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/cloudpickle/cloudpickle.py", line 1313, in dump
+    return super().dump(obj)
+           ^^^^^^^^^^^^^^^^^
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+2025-11-11 01:49:24,470 - distributed.protocol.pickle - ERROR - Failed to serialize 502, message='Bad Gateway', url='https://osg-houston-stashcache.nrp.internet2.edu:8443/aws-opendata/us-west-2/cmip6-pds/CMIP6/ScenarioMIP/CAS/CAS-ESM2-0/ssp245/r1i1p1f1/Amon/tas/gn/v20201228/tas/1.0.0'.
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/worker.py", line 2988, in _run_task_simple
+    result = task(data)
+             ^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 759, in __call__
+    return self.func(*new_argspec)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 199, in _execute_subgraph
+    res = execute_graph(final, keys=[outkey])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 1078, in execute_graph
+    cache[key] = node(cache)
+                 ^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 759, in __call__
+    return self.func(*new_argspec)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/array/core.py", line 141, in getter
+    c = np.asarray(c)
+        ^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 659, in __array__
+    return np.asarray(self.get_duck_array(), dtype=dtype, copy=copy)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 664, in get_duck_array
+    return self.array.get_duck_array()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 897, in get_duck_array
+    return self.array.get_duck_array()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/coding/common.py", line 80, in get_duck_array
+    return self.func(self.array.get_duck_array())
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 737, in get_duck_array
+    array = self.array[self.key]
+            ~~~~~~~~~~^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/backends/zarr.py", line 262, in __getitem__
+    return indexing.explicit_indexing_adapter(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 1129, in explicit_indexing_adapter
+    result = raw_indexing_method(raw_key.tuple)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/backends/zarr.py", line 225, in _getitem
+    return self._array[key]
+           ~~~~~~~~~~~^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 798, in __getitem__
+    result = self.get_orthogonal_selection(pure_selection, fields=fields)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 1080, in get_orthogonal_selection
+    return self._get_selection(indexer=indexer, out=out, fields=fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 1343, in _get_selection
+    self._chunk_getitems(
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 2179, in _chunk_getitems
+    cdatas = self.chunk_store.getitems(ckeys, contexts=contexts)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/storage.py", line 1435, in getitems
+    raise v
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/fsspec/asyn.py", line 244, in _run_coro
+    return await asyncio.wait_for(coro, timeout=timeout), i
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/fsspec/implementations/http.py", line 247, in _cat_file
+    self._raise_not_found_for_status(r, url)
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/fsspec/implementations/http.py", line 230, in _raise_not_found_for_status
+    response.raise_for_status()
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/aiohttp/client_reqrep.py", line 636, in raise_for_status
+    raise ClientResponseError(
+aiohttp.client_exceptions.ClientResponseError: 502, message='Bad Gateway', url='https://osg-houston-stashcache.nrp.internet2.edu:8443/aws-opendata/us-west-2/cmip6-pds/CMIP6/ScenarioMIP/CAS/CAS-ESM2-0/ssp245/r1i1p1f1/Amon/tas/gn/v20201228/tas/1.0.0'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/protocol/pickle.py", line 63, in dumps
+    result = pickle.dumps(x, **dump_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/protocol/pickle.py", line 68, in dumps
+    pickler.dump(x)
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/protocol/pickle.py", line 80, in dumps
+    result = cloudpickle.dumps(x, **dump_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/cloudpickle/cloudpickle.py", line 1544, in dumps
+    cp.dump(obj)
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/cloudpickle/cloudpickle.py", line 1313, in dump
+    return super().dump(obj)
+           ^^^^^^^^^^^^^^^^^
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+2025-11-11 01:49:24,481 - distributed.protocol.pickle - ERROR - Failed to serialize 502, message='Bad Gateway', url='https://dtn-pas.jack.nrp.internet2.edu:8443/aws-opendata/us-west-2/cmip6-pds/CMIP6/CMIP/CAMS/CAMS-CSM1-0/historical/r1i1p1f1/Amon/tas/gn/v20190708/tas/1.0.0'.
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/worker.py", line 2988, in _run_task_simple
+    result = task(data)
+             ^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 759, in __call__
+    return self.func(*new_argspec)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 199, in _execute_subgraph
+    res = execute_graph(final, keys=[outkey])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 1078, in execute_graph
+    cache[key] = node(cache)
+                 ^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 759, in __call__
+    return self.func(*new_argspec)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 199, in _execute_subgraph
+    res = execute_graph(final, keys=[outkey])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 1078, in execute_graph
+    cache[key] = node(cache)
+                 ^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/_task_spec.py", line 759, in __call__
+    return self.func(*new_argspec)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/dask/array/core.py", line 141, in getter
+    c = np.asarray(c)
+        ^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 659, in __array__
+    return np.asarray(self.get_duck_array(), dtype=dtype, copy=copy)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 664, in get_duck_array
+    return self.array.get_duck_array()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 897, in get_duck_array
+    return self.array.get_duck_array()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/coding/common.py", line 80, in get_duck_array
+    return self.func(self.array.get_duck_array())
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 737, in get_duck_array
+    array = self.array[self.key]
+            ~~~~~~~~~~^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/backends/zarr.py", line 262, in __getitem__
+    return indexing.explicit_indexing_adapter(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/core/indexing.py", line 1129, in explicit_indexing_adapter
+    result = raw_indexing_method(raw_key.tuple)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/xarray/backends/zarr.py", line 225, in _getitem
+    return self._array[key]
+           ~~~~~~~~~~~^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 798, in __getitem__
+    result = self.get_orthogonal_selection(pure_selection, fields=fields)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 1080, in get_orthogonal_selection
+    return self._get_selection(indexer=indexer, out=out, fields=fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 1343, in _get_selection
+    self._chunk_getitems(
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/core.py", line 2179, in _chunk_getitems
+    cdatas = self.chunk_store.getitems(ckeys, contexts=contexts)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/zarr/storage.py", line 1435, in getitems
+    raise v
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/fsspec/asyn.py", line 244, in _run_coro
+    return await asyncio.wait_for(coro, timeout=timeout), i
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/fsspec/implementations/http.py", line 247, in _cat_file
+    self._raise_not_found_for_status(r, url)
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/fsspec/implementations/http.py", line 230, in _raise_not_found_for_status
+    response.raise_for_status()
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/aiohttp/client_reqrep.py", line 636, in raise_for_status
+    raise ClientResponseError(
+aiohttp.client_exceptions.ClientResponseError: 502, message='Bad Gateway', url='https://dtn-pas.jack.nrp.internet2.edu:8443/aws-opendata/us-west-2/cmip6-pds/CMIP6/CMIP/CAMS/CAMS-CSM1-0/historical/r1i1p1f1/Amon/tas/gn/v20190708/tas/1.0.0'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/protocol/pickle.py", line 63, in dumps
+    result = pickle.dumps(x, **dump_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/protocol/pickle.py", line 68, in dumps
+    pickler.dump(x)
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/distributed/protocol/pickle.py", line 80, in dumps
+    result = cloudpickle.dumps(x, **dump_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/cloudpickle/cloudpickle.py", line 1544, in dumps
+    cp.dump(obj)
+  File "/home/runner/micromamba/envs/osdf-cookbook/lib/python3.12/site-packages/cloudpickle/cloudpickle.py", line 1313, in dump
+    return super().dump(obj)
+           ^^^^^^^^^^^^^^^^^
+TypeError: can't pickle multidict._multidict.CIMultiDictProxy objects
