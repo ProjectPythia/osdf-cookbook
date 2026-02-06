@@ -93,6 +93,7 @@ body.vscode-dark {
   min-width: 300px;
   max-width: 700px;
   line-height: 1.6;
+  padding-bottom: 4px;
 }
 
 .xr-text-repr-fallback {
@@ -103,8 +104,11 @@ body.vscode-dark {
 .xr-header {
   padding-top: 6px;
   padding-bottom: 6px;
-  margin-bottom: 4px;
+}
+
+.xr-header {
   border-bottom: solid 1px var(--xr-border-color);
+  margin-bottom: 4px;
 }
 
 .xr-header > div,
@@ -115,20 +119,15 @@ body.vscode-dark {
 }
 
 .xr-obj-type,
-.xr-obj-name,
-.xr-group-name {
+.xr-obj-name {
   margin-left: 2px;
   margin-right: 10px;
 }
 
-.xr-group-name::before {
-  content: "📁";
-  padding-right: 0.3em;
-}
-
-.xr-group-name,
-.xr-obj-type {
+.xr-obj-type,
+.xr-group-box-contents > label {
   color: var(--xr-font-color2);
+  display: block;
 }
 
 .xr-sections {
@@ -143,28 +142,39 @@ body.vscode-dark {
   display: contents;
 }
 
-.xr-section-item input {
-  display: inline-block;
+.xr-section-item > input,
+.xr-group-box-contents > input,
+.xr-array-wrap > input {
+  display: block;
   opacity: 0;
   height: 0;
   margin: 0;
 }
 
-.xr-section-item input + label {
+.xr-section-item > input + label,
+.xr-var-item > input + label {
   color: var(--xr-disabled-color);
-  border: 2px solid transparent !important;
 }
 
-.xr-section-item input:enabled + label {
+.xr-section-item > input:enabled + label,
+.xr-var-item > input:enabled + label,
+.xr-array-wrap > input:enabled + label,
+.xr-group-box-contents > input:enabled + label {
   cursor: pointer;
   color: var(--xr-font-color2);
 }
 
-.xr-section-item input:focus + label {
-  border: 2px solid var(--xr-font-color0) !important;
+.xr-section-item > input:focus-visible + label,
+.xr-var-item > input:focus-visible + label,
+.xr-array-wrap > input:focus-visible + label,
+.xr-group-box-contents > input:focus-visible + label {
+  outline: auto;
 }
 
-.xr-section-item input:enabled + label:hover {
+.xr-section-item > input:enabled + label:hover,
+.xr-var-item > input:enabled + label:hover,
+.xr-array-wrap > input:enabled + label:hover,
+.xr-group-box-contents > input:enabled + label:hover {
   color: var(--xr-font-color0);
 }
 
@@ -172,11 +182,25 @@ body.vscode-dark {
   grid-column: 1;
   color: var(--xr-font-color2);
   font-weight: 500;
+  white-space: nowrap;
+}
+
+.xr-section-summary > em {
+  font-weight: normal;
+}
+
+.xr-span-grid {
+  grid-column-end: -1;
 }
 
 .xr-section-summary > span {
   display: inline-block;
-  padding-left: 0.5em;
+  padding-left: 0.3em;
+}
+
+.xr-group-box-contents > input:checked + label > span {
+  display: inline-block;
+  padding-left: 0.6em;
 }
 
 .xr-section-summary-in:disabled + label {
@@ -204,7 +228,8 @@ body.vscode-dark {
 }
 
 .xr-section-summary,
-.xr-section-inline-details {
+.xr-section-inline-details,
+.xr-group-box-contents > label {
   padding-top: 4px;
 }
 
@@ -213,20 +238,29 @@ body.vscode-dark {
 }
 
 .xr-section-details {
-  display: none;
   grid-column: 1 / -1;
   margin-top: 4px;
   margin-bottom: 5px;
+}
+
+.xr-section-summary-in ~ .xr-section-details {
+  display: none;
 }
 
 .xr-section-summary-in:checked ~ .xr-section-details {
   display: contents;
 }
 
+.xr-children {
+  display: inline-grid;
+  grid-template-columns: 100%;
+  grid-column: 1 / -1;
+  padding-top: 4px;
+}
+
 .xr-group-box {
   display: inline-grid;
-  grid-template-columns: 0px 20px auto;
-  width: 100%;
+  grid-template-columns: 0px 30px auto;
 }
 
 .xr-group-box-vline {
@@ -240,13 +274,43 @@ body.vscode-dark {
   grid-column-start: 2;
   grid-row-start: 1;
   height: 1em;
-  width: 20px;
+  width: 26px;
   border-bottom: 0.2em solid;
   border-color: var(--xr-border-color);
 }
 
 .xr-group-box-contents {
   grid-column-start: 3;
+  padding-bottom: 4px;
+}
+
+.xr-group-box-contents > label::before {
+  content: "📂";
+  padding-right: 0.3em;
+}
+
+.xr-group-box-contents > input:checked + label::before {
+  content: "📁";
+}
+
+.xr-group-box-contents > input:checked + label {
+  padding-bottom: 0px;
+}
+
+.xr-group-box-contents > input:checked ~ .xr-sections {
+  display: none;
+}
+
+.xr-group-box-contents > input + label > span {
+  display: none;
+}
+
+.xr-group-box-ellipsis {
+  font-size: 1.4em;
+  font-weight: 900;
+  color: var(--xr-font-color2);
+  letter-spacing: 0.15em;
+  cursor: default;
 }
 
 .xr-array-wrap {
@@ -480,9 +544,9 @@ dl.xr-attrs {
 Dimensions:      (date: 54, lat: 416, lon: 840)
 Coordinates:
   * date         (date) object 432B 2020-06-02 2020-06-03 ... 2020-08-31
+    day_of_year  (date) int64 432B 154 155 157 159 160 ... 237 239 240 242 244
   * lat          (lat) float64 3kB 66.85 66.85 66.85 66.85 ... 66.83 66.83 66.83
   * lon          (lon) float64 7kB 134.7 134.7 134.7 134.7 ... 134.7 134.7 134.7
-    day_of_year  (date) int64 432B 154 155 157 159 160 ... 237 239 240 242 244
 Data variables:
     ndvi         (date, lat, lon) float64 151MB dask.array&lt;chunksize=(1, 100, 100), meta=np.ndarray&gt;
     scl          (date, lat, lon) float64 151MB dask.array&lt;chunksize=(1, 100, 100), meta=np.ndarray&gt;
@@ -490,7 +554,7 @@ Attributes:
     spec:           RasterSpec(epsg=4326, bounds=(134.66612907013848, 66.8273...
     crs:            epsg:4326
     transform:      | 0.00, 0.00, 134.67|\n| 0.00,-0.00, 66.85|\n| 0.00, 0.00...
-    resolution_xy:  (6.612317572720078e-05, 6.372865585874454e-05)</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-ddd5de36-0116-40a0-a420-3b90b09392c5' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-ddd5de36-0116-40a0-a420-3b90b09392c5' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>date</span>: 54</li><li><span class='xr-has-index'>lat</span>: 416</li><li><span class='xr-has-index'>lon</span>: 840</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-00e88c1d-2bf1-4788-9fc9-69c57e40c27c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-00e88c1d-2bf1-4788-9fc9-69c57e40c27c' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>date</span></div><div class='xr-var-dims'>(date)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>2020-06-02 ... 2020-08-31</div><input id='attrs-fad322a5-7fcb-4a74-ae8c-064f94c9245f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-fad322a5-7fcb-4a74-ae8c-064f94c9245f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8aa89c81-afff-4ff3-b151-5a283fca736d' class='xr-var-data-in' type='checkbox'><label for='data-8aa89c81-afff-4ff3-b151-5a283fca736d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([datetime.date(2020, 6, 2), datetime.date(2020, 6, 3),
+    resolution_xy:  (6.612317572720078e-05, 6.372865585874454e-05)</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-2b170878-e2ec-4fa5-ab05-9360c632f0df' class='xr-section-summary-in' type='checkbox' disabled /><label for='section-2b170878-e2ec-4fa5-ab05-9360c632f0df' class='xr-section-summary'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>date</span>: 54</li><li><span class='xr-has-index'>lat</span>: 416</li><li><span class='xr-has-index'>lon</span>: 840</li></ul></div></li><li class='xr-section-item'><input id='section-bce27544-4a94-472a-9183-0a30c44e25d8' class='xr-section-summary-in' type='checkbox' checked /><label for='section-bce27544-4a94-472a-9183-0a30c44e25d8' class='xr-section-summary' title='Expand/collapse section'>Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>date</span></div><div class='xr-var-dims'>(date)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>2020-06-02 ... 2020-08-31</div><input id='attrs-cfaae786-f77a-4043-9915-9d41ca75b91a' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-cfaae786-f77a-4043-9915-9d41ca75b91a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cb1f2132-1628-4452-9696-01ec618cd867' class='xr-var-data-in' type='checkbox'><label for='data-cb1f2132-1628-4452-9696-01ec618cd867' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([datetime.date(2020, 6, 2), datetime.date(2020, 6, 3),
        datetime.date(2020, 6, 5), datetime.date(2020, 6, 7),
        datetime.date(2020, 6, 8), datetime.date(2020, 6, 10),
        datetime.date(2020, 6, 12), datetime.date(2020, 6, 13),
@@ -516,13 +580,13 @@ Attributes:
        datetime.date(2020, 8, 19), datetime.date(2020, 8, 21),
        datetime.date(2020, 8, 22), datetime.date(2020, 8, 24),
        datetime.date(2020, 8, 26), datetime.date(2020, 8, 27),
-       datetime.date(2020, 8, 29), datetime.date(2020, 8, 31)], dtype=object)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>66.85 66.85 66.85 ... 66.83 66.83</div><input id='attrs-c0b1b58d-5e15-4dcc-8d64-16bd6254aeaf' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-c0b1b58d-5e15-4dcc-8d64-16bd6254aeaf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4a8ea2a9-32e3-4443-affe-fc83e52bf8c9' class='xr-var-data-in' type='checkbox'><label for='data-4a8ea2a9-32e3-4443-affe-fc83e52bf8c9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([66.853845, 66.853782, 66.853718, ..., 66.827525, 66.827462, 66.827398],
-      shape=(416,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>134.7 134.7 134.7 ... 134.7 134.7</div><input id='attrs-2d64dc04-7823-4ee0-9700-ce1162ce195e' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-2d64dc04-7823-4ee0-9700-ce1162ce195e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fe5bab1c-8653-48fb-adbf-5221dbc19329' class='xr-var-data-in' type='checkbox'><label for='data-fe5bab1c-8653-48fb-adbf-5221dbc19329' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([134.666129, 134.666195, 134.666261, ..., 134.721474, 134.72154 ,
-       134.721606], shape=(840,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>day_of_year</span></div><div class='xr-var-dims'>(date)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>154 155 157 159 ... 239 240 242 244</div><input id='attrs-8af49bec-6fb4-42c0-a5ee-53b1d572c618' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-8af49bec-6fb4-42c0-a5ee-53b1d572c618' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-be92eb12-a1f9-4f12-83b9-d309c5294f7d' class='xr-var-data-in' type='checkbox'><label for='data-be92eb12-a1f9-4f12-83b9-d309c5294f7d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([154, 155, 157, 159, 160, 162, 164, 165, 167, 169, 170, 172, 174,
+       datetime.date(2020, 8, 29), datetime.date(2020, 8, 31)], dtype=object)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>day_of_year</span></div><div class='xr-var-dims'>(date)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>154 155 157 159 ... 239 240 242 244</div><input id='attrs-907a247e-d11e-4859-bb9e-ff9921c1093a' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-907a247e-d11e-4859-bb9e-ff9921c1093a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4c5862dc-21a9-4a27-af29-ad31c7f2caf4' class='xr-var-data-in' type='checkbox'><label for='data-4c5862dc-21a9-4a27-af29-ad31c7f2caf4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([154, 155, 157, 159, 160, 162, 164, 165, 167, 169, 170, 172, 174,
        175, 177, 179, 180, 182, 184, 185, 187, 189, 190, 192, 194, 195,
        197, 199, 200, 202, 204, 205, 207, 209, 210, 212, 214, 215, 217,
        219, 220, 222, 224, 225, 227, 229, 232, 234, 235, 237, 239, 240,
-       242, 244])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-214ec0a0-3edb-47ce-b90c-63bed0d21867' class='xr-section-summary-in' type='checkbox'  checked><label for='section-214ec0a0-3edb-47ce-b90c-63bed0d21867' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>ndvi</span></div><div class='xr-var-dims'>(date, lat, lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 100, 100), meta=np.ndarray&gt;</div><input id='attrs-f7d9e584-081f-4bf9-8a9a-278e8a48bb29' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-f7d9e584-081f-4bf9-8a9a-278e8a48bb29' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a4faf340-c24d-4df9-81a6-439412f8af4b' class='xr-var-data-in' type='checkbox'><label for='data-a4faf340-c24d-4df9-81a6-439412f8af4b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
+       242, 244])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>66.85 66.85 66.85 ... 66.83 66.83</div><input id='attrs-0841e68a-66dc-4618-87ad-aee0715cdbb0' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-0841e68a-66dc-4618-87ad-aee0715cdbb0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d63e02bc-e0c4-4b00-8071-5e8822f04ea8' class='xr-var-data-in' type='checkbox'><label for='data-d63e02bc-e0c4-4b00-8071-5e8822f04ea8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([66.853845, 66.853782, 66.853718, ..., 66.827525, 66.827462, 66.827398],
+      shape=(416,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>134.7 134.7 134.7 ... 134.7 134.7</div><input id='attrs-7d8c8005-f40a-4411-be7a-2ed5995c2948' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-7d8c8005-f40a-4411-be7a-2ed5995c2948' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2093eb54-3711-4af8-a42b-503d9d7087f6' class='xr-var-data-in' type='checkbox'><label for='data-2093eb54-3711-4af8-a42b-503d9d7087f6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([134.666129, 134.666195, 134.666261, ..., 134.721474, 134.72154 ,
+       134.721606], shape=(840,))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-607c64d0-5a5d-49e0-98bc-e16d7c42008b' class='xr-section-summary-in' type='checkbox' checked /><label for='section-607c64d0-5a5d-49e0-98bc-e16d7c42008b' class='xr-section-summary' title='Expand/collapse section'>Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>ndvi</span></div><div class='xr-var-dims'>(date, lat, lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 100, 100), meta=np.ndarray&gt;</div><input id='attrs-4263aa2f-4999-4088-9d9f-5678b48d61b9' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-4263aa2f-4999-4088-9d9f-5678b48d61b9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0293ddc6-77fc-4fac-a06b-5da2b10dc437' class='xr-var-data-in' type='checkbox'><label for='data-0293ddc6-77fc-4fac-a06b-5da2b10dc437' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -660,7 +724,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>scl</span></div><div class='xr-var-dims'>(date, lat, lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 100, 100), meta=np.ndarray&gt;</div><input id='attrs-e80eeb93-6f65-41ae-a9e9-924a229dae81' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e80eeb93-6f65-41ae-a9e9-924a229dae81' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f9abb575-3ba6-4db9-935e-c3e89339a928' class='xr-var-data-in' type='checkbox'><label for='data-f9abb575-3ba6-4db9-935e-c3e89339a928' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>scl</span></div><div class='xr-var-dims'>(date, lat, lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 100, 100), meta=np.ndarray&gt;</div><input id='attrs-b188c51f-878e-433a-901f-d8d1bfba5c73' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b188c51f-878e-433a-901f-d8d1bfba5c73' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-46604983-df19-4d24-a953-23316bc14736' class='xr-var-data-in' type='checkbox'><label for='data-46604983-df19-4d24-a953-23316bc14736' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -798,6 +862,6 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-c5be679f-49cb-4840-82b2-43298f6214b7' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c5be679f-49cb-4840-82b2-43298f6214b7' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>spec :</span></dt><dd>RasterSpec(epsg=4326, bounds=(134.66612907013848, 66.82733429256427, 134.72167253774933, 66.85384541340152), resolutions_xy=(6.612317572720078e-05, 6.372865585874454e-05))</dd><dt><span>crs :</span></dt><dd>epsg:4326</dd><dt><span>transform :</span></dt><dd>| 0.00, 0.00, 134.67|
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-7a9aa2ca-fef6-4a80-a133-ff2174b57790' class='xr-section-summary-in' type='checkbox' checked /><label for='section-7a9aa2ca-fef6-4a80-a133-ff2174b57790' class='xr-section-summary' title='Expand/collapse section'>Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>spec :</span></dt><dd>RasterSpec(epsg=4326, bounds=(134.66612907013848, 66.82733429256427, 134.72167253774933, 66.85384541340152), resolutions_xy=(6.612317572720078e-05, 6.372865585874454e-05))</dd><dt><span>crs :</span></dt><dd>epsg:4326</dd><dt><span>transform :</span></dt><dd>| 0.00, 0.00, 134.67|
 | 0.00,-0.00, 66.85|
 | 0.00, 0.00, 1.00|</dd><dt><span>resolution_xy :</span></dt><dd>(6.612317572720078e-05, 6.372865585874454e-05)</dd></dl></div></li></ul></div></div>
