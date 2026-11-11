@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="http://localhost:3000/sitemap_style.xsl" ?>
+<?xml-stylesheet type="text/xsl" href="http://pre.render/sitemap_style.xsl" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://localhost:3000</loc>
+    <loc>http://pre.render</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/how-to-cite</loc>
+    <loc>http://pre.render/notebooks/how-to-cite</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/osdf-intro</loc>
+    <loc>http://pre.render/notebooks/osdf-intro</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/pelicanfs</loc>
+    <loc>http://pre.render/notebooks/pelicanfs</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/ncar-intro</loc>
+    <loc>http://pre.render/notebooks/ncar-intro</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/cesm2-oceanheat</loc>
+    <loc>http://pre.render/notebooks/cesm2-oceanheat</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/cmip6-gmst</loc>
+    <loc>http://pre.render/notebooks/cmip6-gmst</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/envistor-foundations</loc>
+    <loc>http://pre.render/notebooks/envistor-foundations</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/envistor-technical</loc>
+    <loc>http://pre.render/notebooks/envistor-technical</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/sonarai-foundations</loc>
+    <loc>http://pre.render/notebooks/sonarai-foundations</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/sonarai-technical</loc>
+    <loc>http://pre.render/notebooks/sonarai-technical</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/pycogss-foundations</loc>
+    <loc>http://pre.render/notebooks/pycogss-foundations</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/pycogss-spectralchange-pfs</loc>
+    <loc>http://pre.render/notebooks/pycogss-spectralchange-pfs</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/introduction-to-nsdf-openvisus</loc>
+    <loc>http://pre.render/notebooks/introduction-to-nsdf-openvisus</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/ocean-llc4320-visualization</loc>
+    <loc>http://pre.render/notebooks/ocean-llc4320-visualization</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/ocean-llc2160-visualization</loc>
+    <loc>http://pre.render/notebooks/ocean-llc2160-visualization</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/atmosphere-llc2160-visualization</loc>
+    <loc>http://pre.render/notebooks/atmosphere-llc2160-visualization</loc>
   </url>
 </urlset>
